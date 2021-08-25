@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Typography, Form, Button, Input} from 'antd';
+import FileUpload from '../../utils/FileUpload';
 
 const {Title} = Typography;
 const {TextArea} = Input;
@@ -41,6 +42,9 @@ function UploadProductPage(props) {
 
             <Form>
                 {/*dropzone*/}
+
+                <FileUpload/>
+
                 <br/>
                 <br/>
                 <br/>

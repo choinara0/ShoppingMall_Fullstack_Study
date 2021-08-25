@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FIleUpload(props) {
+function FileUpload(props) {
     return (
         <div>
 
@@ -10,4 +10,4 @@ function FIleUpload(props) {
     );
 }
 
-export default FIleUpload;
+export default FileUpload;

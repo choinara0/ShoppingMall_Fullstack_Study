@@ -41,10 +41,7 @@ function UploadProductPage(props) {
             </div>
 
             <Form>
-                {/*dropzone*/}
-
                 <FileUpload/>
-
                 <br/>
                 <br/>
                 <br/>

@@ -16,7 +16,6 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage }).single('file');
 
-
 router.post('/image', (req, res)=>{
      // 가져온 이미지를 저장할 것
 
@@ -26,7 +25,7 @@ router.post('/image', (req, res)=>{
         }
         return res.json({
             success: true,
-            filePath: res.req.path,
+            filePath: res.req.file.path,
             fileName: res.req.file.filename,
         })
     })

@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone'
 import {Icon} from 'antd'
 import axios from 'axios'
 
-function FileUpload() {
+function FileUpload(props) {
     const [Images, setImages] = useState([]) //image 정보 저장할 곳
     const dropHandler = (files) => {
 
@@ -19,8 +19,8 @@ function FileUpload() {
             .then(response=>{
                 if(response.data.success){
                     console.log(response.data)
-
                     setImages([...Images, response.data.filePath])
+                    props.refreshFunction([...Images, response.data.filePath])
 
                 }else{
                     alert('fail file upload')
@@ -33,8 +33,8 @@ function FileUpload() {
 
         let newImages = [...Images]
         newImages.splice(currentIndex, 1)
-
         setImages(newImages)
+        props.refreshFunction(newImages)
     }
 
     return (

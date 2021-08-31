@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Typography, Form, Button, Input} from 'antd';
 import FileUpload from '../../utils/FileUpload';
+import Axios from "axios";
 
 const {Title} = Typography;
 const {TextArea} = Input;
@@ -36,6 +37,34 @@ function UploadProductPage(props) {
     const updateImages = (newImages) => {
         setProductImage(newImages)
     }
+    const submitHandler = (event) => {
+        console.log(1)
+        event.preventDefault(); //확인 버튼을 눌렀을 때 자동적으로 page가 refresh 되지 않도록 함
+
+        if(!productName || !productDescription || !productPrice || !Continent || !productImage){
+            return alert("모든 값을 입력하세요.")
+        }
+        // 서버에 채운 값들을 request로 보낸다.
+        const body = {
+            //Login된 사람의 ID
+            writer: props.user.userData._id,
+            title: productName,
+            description: productDescription,
+            price: productPrice,
+            images: productImage,
+            continent: Continent
+        }
+        Axios.post("/api/product", body)
+            .then(response => {
+                if (response.data.success){
+                    alert("상품 업로드에 성공했습니다.")
+                    props.history.push('/') //상품 업로드 성공시 첫페이지로 이동하게 설정
+                }
+                else{
+                    alert('상품 업로드에 실패했습니다.')
+                }
+            })
+    }
 
     return (
         <div style={{maxWidth: '700px', margin: '2rem auto'}}>
@@ -43,7 +72,7 @@ function UploadProductPage(props) {
                 <Title level={2}> 여행 상품 업로드 </Title>
             </div>
 
-            <Form>
+            <Form onSubmit={submitHandler}>
                 <FileUpload refreshFunction={updateImages}/>
                 <br/>
                 <br/>
@@ -67,7 +96,7 @@ function UploadProductPage(props) {
                 </select>
                 <br/>
                 <br/>
-                <Button>
+                <Button type="submit" onClick={submitHandler}>
                     확인
                 </Button>
             </Form>

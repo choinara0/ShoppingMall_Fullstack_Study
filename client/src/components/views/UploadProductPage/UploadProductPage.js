@@ -38,7 +38,6 @@ function UploadProductPage(props) {
         setProductImage(newImages)
     }
     const submitHandler = (event) => {
-        console.log(1)
         event.preventDefault(); //확인 버튼을 눌렀을 때 자동적으로 page가 refresh 되지 않도록 함
 
         if(!productName || !productDescription || !productPrice || !Continent || !productImage){

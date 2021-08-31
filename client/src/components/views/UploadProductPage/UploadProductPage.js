@@ -33,6 +33,9 @@ function UploadProductPage(props) {
     const continentChangeHandler = (event) => {
         setContinent(event.currentTarget.value)
     }
+    const updateImages = (newImages) => {
+        setProductImage(newImages)
+    }
 
     return (
         <div style={{maxWidth: '700px', margin: '2rem auto'}}>
@@ -41,7 +44,7 @@ function UploadProductPage(props) {
             </div>
 
             <Form>
-                <FileUpload/>
+                <FileUpload refreshFunction={updateImages}/>
                 <br/>
                 <br/>
                 <br/>

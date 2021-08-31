@@ -34,6 +34,6 @@ const productSchema = mongoose.Schema({
 }, {timestamps: true})  //timestamps를 설정하면 등록시간이 자동으로 업뎃됨
 
 
-const Product = mongoose.model('User', productSchema);
+const Product = mongoose.model('Product', productSchema);
 
 module.exports = { Product }

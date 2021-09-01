@@ -43,7 +43,7 @@ function LandingPage() {
             {/*{filter}*/}
             {/*{search}*/}
             {/*{Card}*/}
-            <Row>
+            <Row gutter={[16, 16]}> {/*카드끼리의 여백 설정*/}
                 {renderCards}
             </Row>
 

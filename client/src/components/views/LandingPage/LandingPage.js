@@ -22,16 +22,17 @@ function LandingPage() {
 
     const renderCards = Products.map((product, index) => {
         console.log(product)
-        return <Card
+        return <Col lg={6} md={8} xs={24}> {/*Row당 24size, 즉 중간 화면일 때 하나당 6, 가장 작은 화면일 때 하나당 24    */}
+        <Card
             key={index}
-            cover={<img src={`http://localhost:5000/${product.images[0]}`}/>}
-        >
+            cover={<img src={`http://localhost:5000/${product.images[0]}`}/>}>
             <Meta
             title={product.title}
             description={`$${product.price}`}
 
             />
         </Card>
+        </Col>
     })
 
     return (
@@ -43,8 +44,10 @@ function LandingPage() {
             {/*{filter}*/}
             {/*{search}*/}
             {/*{Card}*/}
+            <Row>
+                {renderCards}
+            </Row>
 
-            {renderCards}
 
             <div style={{justifyContent: 'center'}}>
                 <button> 더 보기 </button>

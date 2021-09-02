@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { FaCode } from "react-icons/fa";
 import axios from 'axios'
-import {Icon, Col, Card, Row, Carousel} from 'antd';
+import {Icon, Col, Card, Row} from 'antd';
 import Meta from "antd/lib/card/Meta";
+import ImageSlider from "../../utils/ImageSlider";
 
 
 function LandingPage() {
@@ -24,29 +24,14 @@ function LandingPage() {
         console.log(product)
         return <Col lg={6} md={8} xs={24} key={index}> {/*Row당 24size, 즉 중간 화면일 때 하나당 6, 가장 작은 화면일 때 하나당 24    */}
         <Card
-            cover={
-                <Carousel>
-                    <div>
-                        <h3>1</h3>
-                    </div>
-                    <div>
-                        <h3>2</h3>
-                    </div>
-                    <div>
-                        <h3>3</h3>
-                    </div>
-                    <div>
-                        <h3>4</h3>
-                    </div>
-                </Carousel>
-            }>
+            cover={<ImageSlider images={product.images}/>}>
             <Meta
             title={product.title}
             description={`$${product.price}`}
 
             />
         </Card>
-        </Col>
+        </Col> 
     })
 
     return (

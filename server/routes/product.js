@@ -44,7 +44,7 @@ router.post('/', (req, res)=>{
 
 router.post('/products', (req, res)=>{
 
-    let limit = req.body.limit ? perseInt(req.body.limit) : 20 //req.body.limit가 있으면 받고, 아니면 20
+    let limit = req.body.limit ? parseInt(req.body.limit) : 20 //req.body.limit가 있으면 받고, 아니면 20
     let skip = req.body.skip ? parseInt(req.body.skip) : 0
     //product collection에 들어있는 모든 상품 정보 가져오기
     Product.find() // Product.find() : product collection안에 있는 모든 정보를 찾는 메소드

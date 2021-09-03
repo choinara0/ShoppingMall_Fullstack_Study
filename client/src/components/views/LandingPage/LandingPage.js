@@ -10,13 +10,7 @@ function LandingPage() {
     const [Skip, setSkip] = useState(0) //처음 데이터가 0에서 시작
     const [Limit, setLimit] = useState(8) //8개만큼 가져올 것
 
-    useEffect(()=>{
-
-        let body = {
-            skip: Skip,
-            limit: Limit
-        }
-
+    const getProduct = (body) => {
         axios.post('api/product/products', body)
             .then(response=>{
                 if(response.data.success){
@@ -26,10 +20,22 @@ function LandingPage() {
                     alert('상품을 가져오는데 실패했습니다.')
                 }
             })
+    }
+    useEffect(()=>{
+
+        let body = {
+            skip: Skip,
+            limit: Limit
+        }
+        getProduct(body)
     }, [])
 
     const loadMoreHandler = () => {
-
+        let body = {
+            skip: Skip,
+            limit: Limit
+        }
+        getProduct(body)
     }
 
     const renderCards = Products.map((product, index) => {

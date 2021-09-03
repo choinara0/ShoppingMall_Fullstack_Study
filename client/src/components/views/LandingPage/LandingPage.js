@@ -14,8 +14,12 @@ function LandingPage() {
         axios.post('api/product/products', body)
             .then(response=>{
                 if(response.data.success){
-                    console.log(response.data)
-                    setProducts(response.data.productInfo)
+                    if(body.loadMore){ //loadMore = true일 때는 기존의 productInfo + 새로 가져온 productInfo
+                        setProducts([...Products, ...response.data.productInfo])
+                    }else{
+                        setProducts(response.data.productInfo)
+                    }
+
                 }else{
                     alert('상품을 가져오는데 실패했습니다.')
                 }
@@ -31,11 +35,15 @@ function LandingPage() {
     }, [])
 
     const loadMoreHandler = () => {
+        let skip = Skip + Limit
+
         let body = {
-            skip: Skip,
-            limit: Limit
+            skip: skip,
+            limit: Limit,
+            loadMore: true
         }
         getProduct(body)
+        setSkip(skip)
     }
 
     const renderCards = Products.map((product, index) => {

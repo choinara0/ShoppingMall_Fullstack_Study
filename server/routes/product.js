@@ -46,8 +46,16 @@ router.post('/products', (req, res)=>{
 
     let limit = req.body.limit ? parseInt(req.body.limit) : 20 //req.body.limit가 있으면 받고, 아니면 20
     let skip = req.body.skip ? parseInt(req.body.skip) : 0
+    let findArgs = {};
+
+    for(let key in req.body.filters){
+        if(req.body.filters[key].length >0){
+            findArgs[key] = req.body.filters[key];
+        }
+    }
+
     //product collection에 들어있는 모든 상품 정보 가져오기
-    Product.find() // Product.find() : product collection안에 있는 모든 정보를 찾는 메소드
+    Product.find(findArgs) // Product.find() : product collection안에 있는 모든 정보를 찾는 메소드
         .populate('writer') // writer가 가지고 있는 모든 정보 가져오기
         .skip(skip)
         .limit(limit)

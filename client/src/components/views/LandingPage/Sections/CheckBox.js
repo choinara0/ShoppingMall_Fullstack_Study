@@ -20,6 +20,7 @@ function CheckBox(props) {
         }
 
         setChecked(newChecked)
+        props.handleFilters(newChecked) //부모 component인 LandingPage에 전달
     }
 
     const renderCheckBoxLists = () => props.list&& props.list.map((value, index) => (

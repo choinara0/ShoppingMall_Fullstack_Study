@@ -7,9 +7,8 @@ function CheckBox(props) {
 
     const renderCheckBoxLists = () => props.list&& props.list.map((value, index) => (
         <React.Fragment key={index}>
-            <Checkbox onChange>
+            <Checkbox onChange/>
                 <span>{value.name}</span>
-            </Checkbox>
         </React.Fragment>
     ))
 

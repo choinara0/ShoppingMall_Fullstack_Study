@@ -77,6 +77,16 @@ function LandingPage() {
         setSkip(0)
     }
 
+    const handlePrice = (value) => {
+        const data = price
+        let array = [];
+        for (let key in data) {
+            if(data[key]._id === parseInt(value)) {
+                array = data[key].array
+            }
+        }
+        return array
+    }
 
     const handleFilters = (filters, category) => {
         const newFilters = {...Filters}
@@ -84,6 +94,10 @@ function LandingPage() {
 
         showFilteredResult(newFilters)
 
+        if (category === 'price') {
+            let priceValue = handlePrice(filters)
+            newFilters[category] = priceValue
+        }
     }
 
     return (

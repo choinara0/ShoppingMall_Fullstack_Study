@@ -9,6 +9,7 @@ function SearchFeature(props) {
 
     const searchHandler = (event) => {
         setSearchTerm(event.target.value)
+        props.refreshFunction(event.target.value) //타이핑을 할 때 부모컴포넌트(landingpage.js)에 값을 전달
     }
 
     return (

@@ -4,7 +4,8 @@ import {Icon, Col, Card, Row} from 'antd';
 import Meta from "antd/lib/card/Meta";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
-import {continents} from "./Sections/Datas";
+import RadioBox from "./Sections/RadioBox";
+import {continents, price} from "./Sections/Datas";
 
 
 
@@ -93,9 +94,16 @@ function LandingPage() {
 
             {/*{filter}*/}
 
-            {/*{checkbox}*/}
-            <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")}/>
-            {/*{radiobax}*/}
+            <Row gutter={[16,16]}>
+                <Col lg={12} xs={24}> {/*반응형을 위해 설정*/}
+                    {/*{checkbox}*/}
+                    <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")}/>
+                </Col>
+                <Col lg={12} xs={24}>
+                    {/*{radiobax}*/}
+                    <RadioBox list={price} handleFilters={filters => handleFilters(filters, "price")}/>
+                </Col>
+            </Row>
 
             {/*{search}*/}
             {/*{Card}*/}

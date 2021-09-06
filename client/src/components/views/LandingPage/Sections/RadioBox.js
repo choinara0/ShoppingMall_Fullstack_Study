@@ -24,7 +24,7 @@ function RadioBox(props) {
                         {renderRadioBox()}
                     </Radio.Group>
                 </Panel>
-            </Collapse>,
+            </Collapse>
         </div>
     );
 }

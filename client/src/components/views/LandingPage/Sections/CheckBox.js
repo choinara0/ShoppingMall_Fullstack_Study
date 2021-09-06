@@ -37,7 +37,7 @@ function CheckBox(props) {
                 <Panel header="This is panel header 1" key="1">
                     {renderCheckBoxLists()}
                 </Panel>
-            </Collapse>,
+            </Collapse>
         </div>
     );
 }

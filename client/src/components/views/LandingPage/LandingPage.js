@@ -92,12 +92,12 @@ function LandingPage() {
         const newFilters = {...Filters}
         newFilters[category] = filters
 
-        showFilteredResult(newFilters)
-
         if (category === 'price') {
             let priceValue = handlePrice(filters)
             newFilters[category] = priceValue
         }
+        showFilteredResult(newFilters)
+        setFilters(newFilters)
     }
 
     return (

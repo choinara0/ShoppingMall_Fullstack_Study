@@ -6,6 +6,7 @@ import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
 import {continents, price} from "./Sections/Datas";
+import SearchFeature from "./Sections/SearchFeature";
 
 
 
@@ -120,6 +121,7 @@ function LandingPage() {
             </Row>
 
             {/*{search}*/}
+            <SearchFeature></SearchFeature>
             {/*{Card}*/}
             <Row gutter={[16, 16]}> {/*카드끼리의 여백 설정*/}
                 {renderCards}

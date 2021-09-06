@@ -121,7 +121,10 @@ function LandingPage() {
             </Row>
 
             {/*{search}*/}
-            <SearchFeature></SearchFeature>
+            <div style={{ display : 'flex', justifyContent : 'flex-end', margin: '1rem auto'}}>
+                <SearchFeature></SearchFeature>
+            </div>
+
             {/*{Card}*/}
             <Row gutter={[16, 16]}> {/*카드끼리의 여백 설정*/}
                 {renderCards}
